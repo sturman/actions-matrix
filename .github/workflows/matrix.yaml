@@ -1,0 +1,17 @@
+name: pull-request
+
+on:
+  pull_request:
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        params: [ { name: app1, settings: settings1, values: values_app1 }, { name: app2, settings: settings2, values: values_app2 } ]
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Echo ${{ matrix.params.name }}
+        run: |
+          echo name --> ${{ matrix.params.name }}
+          echo settings --> ${{ matrix.params.settings }}
+          echo values --> ${{ matrix.params.values }}
